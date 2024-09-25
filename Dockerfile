@@ -69,6 +69,8 @@ RUN if [ "$MODEL_TYPE" = "sdxl" ]; then \
       wget --header="Authorization: Bearer ${HUGGINGFACE_ACCESS_TOKEN}" -O models/vae/ae.safetensors https://huggingface.co/black-forest-labs/FLUX.1-dev/resolve/main/ae.safetensors; \
     fi
 
+RUN git clone https://github.com/AuroBit/ComfyUI-OOTDiffusion.git custom_nodes/ComfyUI-OOTDiffusion
+
 # Stage 3: Final image
 FROM base as final
 
@@ -77,3 +79,4 @@ COPY --from=downloader /comfyui/models /comfyui/models
 
 # Start the container
 CMD /start.sh
+
