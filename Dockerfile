@@ -70,6 +70,7 @@ WORKDIR /comfyui
 #     fi
 
 RUN git clone https://github.com/AuroBit/ComfyUI-OOTDiffusion.git custom_nodes/ComfyUI-OOTDiffusion
+RUN pip install -r custom_nodes/ComfyUI-OOTDiffusion/requirements.txt
 
 # Stage 3: Final image
 FROM base as final
